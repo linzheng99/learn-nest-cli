@@ -1,3 +1,75 @@
-<html>
-<body>hello</body>
-</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+    <input id="fileInput" type="file" multiple/>
+    <script>
+        /** url直接跟参数 */
+
+        // async function urlParam() {
+        //     const res = await axios.get('/api/person/1');
+        //     console.log(res);
+        // }
+        // urlParam();
+
+        /** query 请求 */
+        // async function query() {
+        //     const res = await axios.get('/api/person/find', {
+        //         params: {
+        //             name: '林',
+        //             age: 24
+        //         }
+        //     });
+        //     console.log(res);
+        // }
+        // query();
+
+        /** post 请求( form-urlencoded ) */
+        // async function formUrlEncoded() {
+        //     const res = await axios.post('/api/person', Qs.stringify({
+        //         name: '林',
+        //         age: 24
+        //     }), {
+        //         headers: { 'content-type': 'application/x-www-form-urlencoded' }
+        //     });
+        //     console.log(res);
+        // }
+
+        // formUrlEncoded();
+
+        /** post 请求( json ) */
+        // async function json() {
+        //     const res = await axios.post('/api/person', Qs.stringify({
+        //         name: '林',
+        //         age: 24
+        //     })
+        //     )
+        //     console.log(res);
+        // }
+
+        // json();
+
+        /** post 请求( multipart/form-data ) */
+        const fileInput = document.querySelector('#fileInput');
+
+        async function formData() {
+            const data = new FormData();
+            data.set('name', '林');
+            data.set('age', 20);
+            data.set('file1', fileInput.files[0]);
+            data.set('file2', fileInput.files[1]);
+
+            const res = await axios.post('/api/person/file', data, {
+                headers: { 'content-type': 'multipart/form-data' }
+            });
+            console.log(res);
+        }
+
+        fileInput.onchange = formData;        
+    </script>
+</body>
