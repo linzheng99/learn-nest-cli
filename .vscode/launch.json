@@ -24,7 +24,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "type": "node"
+      "type": "pwa-node"
     },
     {
       "type": "pwa-node",

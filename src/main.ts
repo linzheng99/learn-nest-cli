@@ -7,5 +7,8 @@ async function bootstrap() {
   // useStaticAssets 需要create指定泛类<NestExpressApplication>才能使用
   app.useStaticAssets('public', { prefix: '/static' });
   await app.listen(3000);
+  setTimeout(() => {
+    app.close(); // 触发销毁逻辑
+  }, 3000);
 }
 bootstrap();
