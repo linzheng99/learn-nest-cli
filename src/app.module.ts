@@ -10,9 +10,10 @@ import { LoginGuard } from './login.guard';
 import { TimeInterceptor } from './time.interceptor';
 import { ValidatePipe } from './validate.pipe';
 import { TestFilter } from './test.filter';
+import { HostController } from './host.controller';
 
 @Module({
-  controllers: [AppController],
+  controllers: [AppController, HostController],
   providers: [
     AppService,
     {
